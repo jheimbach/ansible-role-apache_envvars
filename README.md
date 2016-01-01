@@ -1,4 +1,5 @@
 # Ansible Apache Envvars
+[![Build Status](https://travis-ci.org/JHeimbach/ansible-role-apache_envvars.svg?branch=master)](https://travis-ci.org/JHeimbach/ansible-role-apache_envvars)
 Ansible Role for Apache envvars file
 
 
