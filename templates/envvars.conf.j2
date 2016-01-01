@@ -29,25 +29,25 @@ export LANG=C
 
 export LANG
 
-{% if apache_envvars_lynx is defined %}
+{% if apache_envvars_lynx != none %}
 ## The command to get the status for 'apache2ctl status'.
 ## Some packages providing 'www-browser' need '--dump' instead of '-dump'.
 export APACHE_LYNX={{ apache_envvars_lynx }}
 {% endif %}
 
-{% if apache_envvars_ulimit is defined %}
+{% if apache_envvars_ulimit != none %}
 ## If you need a higher file descriptor limit, uncomment and adjust the
 ## following line (default is 8192):
 APACHE_ULIMIT_MAX_FILES= {{ apache_envvars_ulimit }}
 {% endif %}
 
-{% if apache_envvars_arguments is defined %}
+{% if apache_envvars_arguments != none %}
 ## If you would like to pass arguments to the web server, add them below
 ## to the APACHE_ARGUMENTS environment.
 export APACHE_ARGUMENTS={{ apache_envvars_arguments }}
 {% endif %}
 
-{% if apache_envvars_maintscript_debug is defined %}
+{% if apache_envvars_maintscript_debug != none %}
 ## Enable the debug mode for maintainer scripts.
 ## This will produce a verbose output on package installations of web server modules and web application
 ## installations which interact with Apache

@@ -25,4 +25,4 @@ apache_envvars_arguments:
 
 # Set value to activate APACHE2_MAINTSCRIPT_DEBUG
 # default value: 1
-apache_envvars_maintscript_debug: 1
+apache_envvars_maintscript_debug:
