@@ -3,10 +3,22 @@ sudo: required
 env:
   - distribution: ubuntu
     version: 14.04
+    apache: ""
+    init: /sbin/init
+    run_opts: ""
+  - distribution: ubuntu
+    version: 14.04
+    apache: "apache."
     init: /sbin/init
     run_opts: ""
   - distribution: ubuntu
     version: 12.04
+    apache: ""
+    init: /sbin/init
+    run_opts: ""
+  - distribution: ubuntu
+    version: 12.04
+    apache: "apache."
     init: /sbin/init
     run_opts: ""
 
@@ -18,7 +30,7 @@ before_install:
   # Pull container
   - 'sudo docker pull ${distribution}:${version}'
   # Customize container
-  - 'sudo docker build --rm=true --file=tests/Dockerfile.${distribution}-${version} --tag=${distribution}-${version}:ansible tests'
+  - 'sudo docker build --rm=true --file=tests/Dockerfile.${apache}${distribution}-${version} --tag=${distribution}-${version}:ansible tests'
 
 script:
   - container_id=$(mktemp)
