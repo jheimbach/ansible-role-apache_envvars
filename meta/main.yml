@@ -1,0 +1,20 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: jheimbach
+  description: Apache envvars settings for  Debian/Ubuntu.
+  license: "license (BSD, MIT)"
+  min_ansible_version: 1.4
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - precise
+    - raring
+    - saucy
+    - trusty
+  categories:
+    - web

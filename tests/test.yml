@@ -1,0 +1,9 @@
+---
+- hosts: all
+
+  vars:
+    apache_envvars_run_user: testuser
+    apache_envvars_run_group: testuser
+
+  roles:
+    - role_under_test

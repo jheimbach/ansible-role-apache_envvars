@@ -1,0 +1,28 @@
+
+# If you have more than one Apache Instance running/installed
+apache_envvars_multiple_instances_suffix: "-${APACHE_CONFDIR##/etc/apache2-}"
+
+# User which will run the Apache service
+apache_envvars_run_user: www-data
+apache_envvars_run_group: www-data
+
+apache_envvars_pid_file: /var/run/apache2/apache2$SUFFIX.pid
+apache_envvars_run_dir: /var/run/apache2$SUFFIX
+apache_envvars_lock_dir: /var/lock/apache2$SUFFIX
+apache_envvars_log_dir: /var/log/apache2$SUFFIX
+
+# Set value to activate APACHE_LYNX
+# default value: 'www-browser -dump'
+apache_envvars_lynx:
+
+# Set value to activate APACHE_ULIMIT_MAX_FILES
+# default value 'ulimit -n 65536'
+apache_envvars_ulimit:
+
+# Set value to activate APACHE_ARGUMENTS
+# defautl value: ""
+apache_envvars_arguments:
+
+# Set value to activate APACHE2_MAINTSCRIPT_DEBUG
+# default value: 1
+apache_envvars_maintscript_debug: 1

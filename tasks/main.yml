@@ -1,0 +1,18 @@
+---
+- name: Get installed apache packages
+  command: dpkg --get-selections | grep apache
+  register: _apache_package_list
+
+- name: Check if apache is installed
+  set_fact:
+      apache_is_installed: "{{ _apache_package_list.length > 0 }}"
+
+- name: Add apache envvars.
+  template:
+    src: "envvars.conf.j2"
+    dest: "{{ apache_conf_path }}/envvars"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart apache
+  when: apache_is_installed
