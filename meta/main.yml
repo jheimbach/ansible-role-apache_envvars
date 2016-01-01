@@ -1,20 +1,12 @@
 ---
-dependencies: []
-
 galaxy_info:
-  author: jheimbach
-  description: Apache envvars settings for  Debian/Ubuntu.
-  license: "license (BSD, MIT)"
-  min_ansible_version: 1.4
-  platforms:
-  - name: Debian
-    versions:
-    - all
+  author: Johannes Heimbach
+  description: Ansible Role for changing the envvars from apache2
+  license: license (MIT)
+  min_ansible_version: 1.2
   - name: Ubuntu
     versions:
-    - precise
-    - raring
-    - saucy
-    - trusty
+    - all
   categories:
-    - web
+  - web
+

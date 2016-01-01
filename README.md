@@ -1,21 +1,70 @@
-# Ansible Apache Envvars
+#Ansible Apache Envvars
+
 [![Build Status](https://travis-ci.org/JHeimbach/ansible-role-apache_envvars.svg?branch=master)](https://travis-ci.org/JHeimbach/ansible-role-apache_envvars)
-Ansible Role for Apache envvars file
+
+Ansible Role to change Apache envvars under `/etc/apache2/envvars`
+
+Requirements
+------------
+
+You must have apache2 installed, the role checks if apache2 is install, if apache2 is not installed the envvars aren't changed (in fact the task is not running).
+I have no dependency package for installing apache, but I recommend [geerlingguy.apache](https://galaxy.ansible.com/detail#/role/428/), it should working with every other role. If not, please let me know.
 
 
-(Debian/Ubuntu ONLY) You can edit the enviroment variables in `envvars`, to do that you must change `apache_create_envvars` to true, so the task run. 
-The following Variables (and the default value) are currently available:
-    
+Role Variables
+--------------
+
+Followong Variables are possible to set:
+
+    # If you have more than one Apache Instance running/installed
     apache_envvars_multiple_instances_suffix: "-${APACHE_CONFDIR##/etc/apache2-}"
+
+    # User which will run the Apache service
     apache_envvars_run_user: www-data
     apache_envvars_run_group: www-data
+
     apache_envvars_pid_file: /var/run/apache2/apache2$SUFFIX.pid
     apache_envvars_run_dir: /var/run/apache2$SUFFIX
     apache_envvars_lock_dir: /var/lock/apache2$SUFFIX
     apache_envvars_log_dir: /var/log/apache2$SUFFIX
-    apache_envvars_lynx: 'www-browser -dump'
-    apache_envvars_ulimit: 'ulimit -n 65536'
-    apache_envvars_arguments: ""
-    apache_envvars_maintscript_debug: 1
 
-the default values are stored in `vars/Debian.yml`
+The following Elements are not enabled as long as the value is empty
+
+    # Set value to activate APACHE_LYNX
+    # default value: 'www-browser -dump'
+    apache_envvars_lynx:
+
+    # Set value to activate APACHE_ULIMIT_MAX_FILES
+    # default value 'ulimit -n 65536'
+    apache_envvars_ulimit:
+
+    # Set value to activate APACHE_ARGUMENTS
+    # defautl value: ""
+    apache_envvars_arguments:
+
+    # Set value to activate APACHE2_MAINTSCRIPT_DEBUG
+    # default value: 1
+    apache_envvars_maintscript_debug:
+
+
+Dependencies
+------------
+
+No Package dependencies, you need apache2 installed.
+
+Example Playbook
+----------------
+
+    - hosts: webservers
+      roles:
+         - { role: jheimbach.apache_envvars, apache_envvars_run_user: www-data }
+
+License
+-------
+
+MIT
+
+
+Thanks
+------
+I wish to thank [geerlingguy](https://github.com/geerlingguy) for his [work](https://galaxy.ansible.com/detail#/user/219), the testing mechanism and Layout in this role is originally from his apache role.
