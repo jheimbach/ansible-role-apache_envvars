@@ -2,8 +2,8 @@
 - hosts: all
 
   vars:
-    apache_envvars_run_user: testuser
-    apache_envvars_run_group: testuser
+    apache_envvars_run_user: www-data
+    apache_envvars_run_group: www-data
 
   roles:
     - role_under_test

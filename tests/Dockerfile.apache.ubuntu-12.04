@@ -1,0 +1,16 @@
+FROM ubuntu:12.04
+
+# Install Ansible
+RUN apt-get update
+RUN apt-get dist-upgrade -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y dist-upgrade
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install python-software-properties
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install software-properties-common
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install git
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2
+RUN apt-add-repository -y ppa:ansible/ansible
+RUN apt-get update
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y ansible
+
+# Install Ansible inventory file
+RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
