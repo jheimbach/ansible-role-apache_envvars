@@ -57,7 +57,12 @@ Example Playbook
 
     - hosts: webservers
       roles:
-         - { role: jheimbach.apache_envvars, apache_envvars_run_user: www-data }
+         - { role: JHeimbach.apache_envvars, apache_envvars_run_user: www-data }
+
+Installation
+------------
+
+Add Role to your System with `ansible-galaxy install JHeimbach.apache_envvars`
 
 License
 -------
