@@ -1,11 +1,12 @@
 ---
-- name: Get installed apache packages
-  command: dpkg --get-selections | grep apache
-  register: _apache_package_list
+- name: Include OS-specific variables.
+  include_vars: "main.yml"
 
-- name: Check if apache is installed
-  set_fact:
-      apache_is_installed: "{{ _apache_package_list.length > 0 }}"
+- name: Check if apache2 is installed
+  command: dpkg-query -l apache2
+  register: deb_check
+  failed_when: false
+  changed_when: false
 
 - name: Add apache envvars.
   template:
@@ -15,4 +16,4 @@
     group: root
     mode: 0644
   notify: restart apache
-  when: apache_is_installed
+  when: deb_check.stderr.lower().find('no packages found') < 0
